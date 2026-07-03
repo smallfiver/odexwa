@@ -171,6 +171,23 @@ export function resolveAuthTimeoutMs(): number | undefined {
 }
 
 /**
+ * Optional override for puppeteer's CDP `protocolTimeout` (default 180000ms). Calls that run entirely
+ * inside the page — notably `client.getChats()`, which whatsapp-web.js executes via
+ * `Runtime.callFunctionOn` with no pagination pushdown — can exceed this on a degraded/slow page,
+ * surfacing as `ProtocolError: Runtime.callFunctionOn timed out` and (behind a reverse proxy such as
+ * Cloudflare) an HTTP 524. Set WWEBJS_PROTOCOL_TIMEOUT_MS to a larger value in milliseconds to extend
+ * it. Unset, or a value that is not a positive safe integer, keeps puppeteer's default.
+ */
+export function resolveProtocolTimeoutMs(): number | undefined {
+  const raw = process.env.WWEBJS_PROTOCOL_TIMEOUT_MS?.trim();
+  if (!raw || !/^\d+$/.test(raw)) {
+    return undefined;
+  }
+  const ms = Number(raw);
+  return Number.isSafeInteger(ms) && ms > 0 ? ms : undefined;
+}
+
+/**
  * Extracts the JID of the parent community a group is linked to, if any.
  * The field name has varied across whatsapp-web.js/WA Web versions, so
  * known candidates are checked in order.
@@ -346,6 +363,13 @@ export class WhatsAppWebJsAdapter extends EventEmitter implements IWhatsAppEngin
         this.logger.log(`Using auth timeout ${authTimeoutMs}ms`);
       }
 
+      // Extend puppeteer's CDP protocolTimeout on slow/degraded pages, #524. Opt-in: unset keeps
+      // puppeteer's default.
+      const protocolTimeoutMs = resolveProtocolTimeoutMs();
+      if (protocolTimeoutMs) {
+        this.logger.log(`Using protocol timeout ${protocolTimeoutMs}ms`);
+      }
+
       this.client = new Client({
         authStrategy: new LocalAuth({
           clientId: this.config.sessionId,
@@ -357,6 +381,7 @@ export class WhatsAppWebJsAdapter extends EventEmitter implements IWhatsAppEngin
           // Only override the executable when explicitly configured; otherwise let
           // whatsapp-web.js fall back to Puppeteer's bundled Chromium.
           ...(this.config.puppeteer?.executablePath ? { executablePath: this.config.puppeteer.executablePath } : {}),
+          ...(protocolTimeoutMs !== undefined ? { protocolTimeout: protocolTimeoutMs } : {}),
         },
         ...(authTimeoutMs !== undefined ? { authTimeoutMs } : {}),
         ...(versionPin ?? {}),
