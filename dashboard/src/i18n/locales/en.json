@@ -6,7 +6,7 @@
     }
   },
   "common": {
-    "appName": "OpenWA",
+    "appName": "OdexWA",
     "appSubtitle": "WhatsApp API",
     "loading": "Loading...",
     "save": "Save",
@@ -145,7 +145,7 @@
     "connectionError": "Unable to connect to server. Please try again.",
     "help": "Need help?",
     "viewDocs": "View Documentation",
-    "footer": "Made with ❤️ by Yudhi Armyndharis and the OpenWA Community",
+    "footer": "Made with ❤️ by Yudhi Armyndharis and the OdexWA Community",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -588,7 +588,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "Production-ready database",
       "useBuiltIn": "Use Built-in PostgreSQL Container",
-      "builtInDesc": "OpenWA will manage a PostgreSQL container for you",
+      "builtInDesc": "OdexWA will manage a PostgreSQL container for you",
       "dbName": "Database Name",
       "poolSize": "Pool Size",
       "ssl": "SSL Connection",
@@ -622,7 +622,7 @@
       "enable": "Enable Redis",
       "enableDesc": "Required for caching, session storage, and BullMQ queues",
       "useBuiltIn": "Use Built-in Redis Container",
-      "builtInDesc": "OpenWA will manage a Redis container for you",
+      "builtInDesc": "OdexWA will manage a Redis container for you",
       "queueTitle": "Enable BullMQ Queue System",
       "queueDesc": "Use message queues for reliable message and webhook delivery",
       "statsTitle": "Queue Statistics",
@@ -645,7 +645,7 @@
       "s3": "Amazon S3",
       "s3Desc": "Cloud storage (S3 compatible)",
       "useBuiltIn": "Use Built-in MinIO Container",
-      "builtInDesc": "OpenWA will manage a MinIO (S3-compatible) container for you",
+      "builtInDesc": "OdexWA will manage a MinIO (S3-compatible) container for you",
       "storagePath": "Storage Path",
       "bucket": "Bucket Name",
       "region": "Region",
@@ -673,7 +673,7 @@
       "importFailed": "Couldn't import data",
       "importOk": "Data imported",
       "importConfirm": "Importing will REPLACE all current data with the backup ({{rows}} rows). This cannot be undone. Continue?",
-      "invalidFile": "That file isn't a valid OpenWA data backup.",
+      "invalidFile": "That file isn't a valid OdexWA data backup.",
       "importTooLarge": "Backup is too large for the request limit. Increase BODY_SIZE_LIMIT on the server and try again."
     },
     "restart": {
@@ -720,7 +720,7 @@
     "engineSwitchHint": "To switch the active engine, set ENGINE_TYPE in the environment and restart the server",
     "empty": {
       "title": "No plugins installed",
-      "description": "Install a plugin to extend what OpenWA can do."
+      "description": "Install a plugin to extend what OdexWA can do."
     },
     "config": {
       "title": "Configure {{name}}",

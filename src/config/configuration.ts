@@ -154,4 +154,18 @@ export default () => ({
       endpoint: process.env.S3_ENDPOINT,
     },
   },
+
+  // Sales webhooks (PerfectPay / Kirvano -> WhatsApp)
+  salesWebhook: {
+    // WhatsApp session used to send the auto-dispatch message. If unset, dispatch is skipped (logged).
+    sessionId: process.env.SALES_WEBHOOK_SESSION_ID,
+    // {{customerName}} / {{productName}} placeholders are replaced with the real sale data.
+    messageTemplate: process.env.SALES_WEBHOOK_MESSAGE_TEMPLATE,
+    perfectpay: {
+      token: process.env.PERFECTPAY_WEBHOOK_TOKEN,
+    },
+    kirvano: {
+      token: process.env.KIRVANO_WEBHOOK_TOKEN,
+    },
+  },
 });
