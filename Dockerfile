@@ -45,9 +45,13 @@ RUN npm run build && npm run dashboard:ci -- --include=dev && npm run dashboard:
 # ===== Stage 2: Production =====
 FROM docker.io/node:22-slim AS production
 
-# Install Chrome/Chromium and required dependencies
+# Install Chromium runtime dependencies (browser itself is installed pinned below).
+# Debian's `chromium` package is intentionally NOT used: it tracks the latest upstream
+# release, and Chromium >=150 hard-crashes (SIGTRAP/SIGILL) right after service init on
+# some QEMU/KVM VPS guests (observed on a pc-i440fx QEMU machine on an EPYC host) while
+# Chromium 124 runs fine on the same VM. Pinning via Chrome for Testing keeps rebuilds
+# reproducible and immune to a distro chromium bump silently breaking browser launch.
 RUN apt-get update && apt-get install -y \
-    chromium \
     fonts-liberation \
     libappindicator3-1 \
     libasound2 \
@@ -64,15 +68,41 @@ RUN apt-get update && apt-get install -y \
     libxcomposite1 \
     libxdamage1 \
     libxrandr2 \
+    libxkbcommon0 \
+    libxfixes3 \
+    libxext6 \
+    libxi6 \
+    libxtst6 \
+    libpango-1.0-0 \
+    libcairo2 \
+    libatspi2.0-0 \
     xdg-utils \
     dumb-init \
     gosu \
     curl \
+    unzip \
     procps \
     && rm -rf /var/lib/apt/lists/*
 
+# Pinned Chrome for Testing (see comment above for why apt chromium is not used).
+# Bump deliberately via build arg after verifying the new version launches on target hosts:
+#   docker compose build --build-arg CHROME_VERSION=<ver>
+# NOTE: Chrome for Testing only ships linux64 (amd64) builds. On arm64 fall back to the
+# distro chromium package (last-resort; unpinned) so multi-arch images still build.
+ARG CHROME_VERSION=124.0.6367.207
+ARG TARGETARCH
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+        apt-get update && apt-get install -y chromium && rm -rf /var/lib/apt/lists/* \
+        && mkdir -p /opt/chrome-linux64 && ln -s /usr/bin/chromium /opt/chrome-linux64/chrome; \
+    else \
+        curl -fsSL -o /tmp/chrome.zip \
+          "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chrome-linux64.zip" \
+        && unzip -q /tmp/chrome.zip -d /opt \
+        && rm /tmp/chrome.zip; \
+    fi
+
 # Set Chrome executable path for Puppeteer
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+ENV PUPPETEER_EXECUTABLE_PATH=/opt/chrome-linux64/chrome
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
 # Create app user for security
