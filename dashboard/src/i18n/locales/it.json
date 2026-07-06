@@ -70,6 +70,8 @@
     "sessions": "Sessioni",
     "chats": "Chat",
     "webhooks": "Webhook",
+    "products": "Prodotti",
+    "dispatches": "Invii",
     "templates": "Modelli",
     "apiKeys": "Chiavi API",
     "messageTester": "Messaggio di prova",

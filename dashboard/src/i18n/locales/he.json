@@ -70,6 +70,8 @@
     "sessions": "Sessions",
     "chats": "שיחות",
     "webhooks": "Webhooks",
+    "products": "מוצרים",
+    "dispatches": "שיגורים",
     "templates": "Templates",
     "apiKeys": "מפתחות API",
     "messageTester": "בדיקת הודעות",

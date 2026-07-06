@@ -155,6 +155,14 @@ export default () => ({
     },
   },
 
+  // Supabase (usuarios/sessoes/produtos tables + auth). Service-role key is
+  // server-only and bypasses RLS — never send it to the dashboard/browser.
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    anonKey: process.env.SUPABASE_ANON_KEY,
+  },
+
   // Sales webhooks (PerfectPay / Kirvano -> WhatsApp)
   salesWebhook: {
     // WhatsApp session used to send the auto-dispatch message. If unset, dispatch is skipped (logged).

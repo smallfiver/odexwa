@@ -31,9 +31,10 @@ export class SalesWebhookService {
   }
 
   /**
-   * PerfectPay field names/status codes based on a prior integration reference, not an
-   * official confirmed schema. `sale_status_enum` 2 or 10 means "approved". Verify against
-   * a real webhook payload once this is live.
+   * PerfectPay field names/status codes confirmed against a real payload from the
+   * dashboard's own webhook tester (sale_status_enum 2 = "approved"). `phone_formated_ddi`
+   * already includes the country code (e.g. "+5554991916942"), so prefer it over
+   * concatenating phone_area_code + phone_number.
    */
   async handlePerfectPay(body: Record<string, unknown>): Promise<void> {
     const customer = (body.customer as Record<string, unknown>) || {};
@@ -42,7 +43,9 @@ export class SalesWebhookService {
 
     const info: SaleInfo = {
       customerName: String(customer.full_name || ''),
-      customerPhone: `${customer.phone_area_code || ''}${customer.phone_number || ''}`,
+      customerPhone:
+        String(customer.phone_formated_ddi || '') ||
+        `${customer.phone_area_code || ''}${customer.phone_number || ''}`,
       productName: String(product.name || ''),
       approved: statusEnum === 2 || statusEnum === 10,
     };

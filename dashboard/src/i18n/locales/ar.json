@@ -70,6 +70,8 @@
     "sessions": "الجلسات",
     "chats": "المحادثات",
     "webhooks": "الويب هوك",
+    "products": "المنتجات",
+    "dispatches": "عمليات الإرسال",
     "templates": "Templates",
     "apiKeys": "مفاتيح API",
     "messageTester": "اختبار الرسائل",

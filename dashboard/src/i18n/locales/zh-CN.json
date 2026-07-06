@@ -70,6 +70,8 @@
     "sessions": "会话",
     "chats": "聊天",
     "webhooks": "Webhooks",
+    "products": "产品",
+    "dispatches": "触发",
     "templates": "Templates",
     "apiKeys": "API 密钥",
     "messageTester": "消息测试器",
