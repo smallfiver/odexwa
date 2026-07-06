@@ -813,7 +813,9 @@
         "confirm": "هل تريد إعادة إنشاء المفتاح السري لـ {{id}}؟ سيتوقف المفتاح الحالي عن العمل فورًا.",
         "action": "إعادة الإنشاء"
       },
-      "edit": { "title": "تعديل {{id}}" },
+      "edit": {
+        "title": "تعديل {{id}}"
+      },
       "delete": {
         "title": "حذف المثيل",
         "confirm": "هل تريد حذف المثيل {{id}}؟ سيتوقف عنوان الدخول والمفتاح السري الخاصان به عن العمل فورًا.",
@@ -840,6 +842,116 @@
         "secretRegenerated": "تم إعادة إنشاء المفتاح السري",
         "actionFailed": "فشل الإجراء"
       }
+    }
+  },
+  "products": {
+    "title": "المنتجات",
+    "subtitle": "سجّل المنتجات، وأنشئ روابط Webhook للمبيعات، واضبط مسار الرسائل.",
+    "addProduct": "منتج جديد",
+    "session": "الجلسة",
+    "stepsCount": "خطوة واحدة {{count}}",
+    "stepsCount_plural": "{{count}} خطوات",
+    "webhookUrls": "روابط Webhook للمبيعات",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "عام"
+    },
+    "empty": {
+      "title": "لا توجد منتجات بعد",
+      "description": "أنشئ منتجًا لتوليد روابط Webhook ومسار الرسائل الخاص به."
+    },
+    "noSessions": "أنشئ جلسة متصلة أولًا — تحتاج المنتجات إلى جلسة لإرسال الرسائل.",
+    "name": "الاسم",
+    "namePlaceholder": "مثال: دورة عبر الإنترنت",
+    "selectSession": "اختر جلسة",
+    "funnelSteps": "مسار الرسائل",
+    "placeholderHint": "استخدم {{name}} و{{phone}} لتخصيص الرسالة.",
+    "stepN": "الخطوة {{n}}",
+    "moveUp": "تحريك لأعلى",
+    "moveDown": "تحريك لأسفل",
+    "removeStep": "إزالة الخطوة",
+    "stepType": "النوع",
+    "stepTypes": {
+      "text": "نص",
+      "image": "صورة",
+      "video": "فيديو",
+      "document": "مستند"
+    },
+    "delayMinutes": "التأخير (دقائق)",
+    "replaceMedia": "استبدال الملف",
+    "uploadMedia": "رفع ملف",
+    "stepText": "الرسالة",
+    "caption": "التسمية التوضيحية",
+    "textPlaceholder": "اكتب الرسالة...",
+    "addStep": "إضافة خطوة",
+    "editTitle": "تعديل المنتج",
+    "createTitle": "منتج جديد",
+    "testTitle": "اختبار المسار",
+    "testDescription": "أرسل المسار الكامل إلى رقم واتساب لمعاينته.",
+    "phone": "رقم واتساب",
+    "sendTest": "إرسال اختبار",
+    "deleteTitle": "حذف المنتج",
+    "deleteConfirm": "حذف \"{{name}}\"؟ لن يوقف هذا المسارات قيد التشغيل بالفعل.",
+    "actions": {
+      "test": "اختبار",
+      "copy": "نسخ الرابط"
+    },
+    "toasts": {
+      "copyFailed": "تعذّر نسخ الرابط.",
+      "uploadFailed": "فشل الرفع: {{message}}",
+      "updated": "تم تحديث المنتج.",
+      "created": "تم إنشاء المنتج.",
+      "saveFailed": "تعذّر الحفظ: {{message}}",
+      "deleted": "تم حذف المنتج.",
+      "deleteFailed": "تعذّر الحذف: {{message}}",
+      "testSent": "تم بدء مسار الاختبار.",
+      "testFailed": "فشل الاختبار: {{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "الإرساليات",
+    "subtitle": "تابع مسارات الرسائل الجارية والمكتملة.",
+    "stats": {
+      "running": "قيد التشغيل",
+      "completedToday": "اكتملت اليوم",
+      "failedToday": "فشلت اليوم"
+    },
+    "allProducts": "كل المنتجات",
+    "allStatuses": "كل الحالات",
+    "statuses": {
+      "running": "قيد التشغيل",
+      "completed": "مكتمل",
+      "cancelled": "ملغى",
+      "failed": "فشل"
+    },
+    "empty": {
+      "title": "لا توجد إرساليات بعد",
+      "description": "تظهر المسارات هنا عند الموافقة على عملية بيع."
+    },
+    "unknownProduct": "منتج غير معروف",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "عام"
+    },
+    "customerPhone": "الهاتف",
+    "startedAt": "بدأ في",
+    "nextStepAt": "الخطوة التالية في",
+    "completedAt": "اكتمل في",
+    "stepN": "الخطوة {{n}}",
+    "stepResults": {
+      "sent": "تم الإرسال",
+      "failed": "فشل",
+      "skipped": "تم التخطي",
+      "pending": "قيد الانتظار"
+    },
+    "cancel": "إلغاء المسار",
+    "cancelTitle": "إلغاء المسار",
+    "cancelConfirm": "إلغاء مسار {{name}}؟ لن يتم إرسال الخطوات المتبقية.",
+    "toasts": {
+      "cancelled": "تم إلغاء المسار.",
+      "cancelFailed": "تعذّر الإلغاء: {{message}}"
     }
   }
 }

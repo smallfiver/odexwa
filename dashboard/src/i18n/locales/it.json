@@ -809,7 +809,9 @@
         "confirm": "Rigenerare il segreto di firma per {{id}}? Il segreto attuale smetterà di funzionare immediatamente.",
         "action": "Rigenera"
       },
-      "edit": { "title": "Modifica {{id}}" },
+      "edit": {
+        "title": "Modifica {{id}}"
+      },
       "delete": {
         "title": "Elimina istanza",
         "confirm": "Eliminare l'istanza {{id}}? Il relativo URL di ingresso e segreto smetteranno di funzionare immediatamente.",
@@ -836,6 +838,116 @@
         "secretRegenerated": "Segreto rigenerato",
         "actionFailed": "Azione non riuscita"
       }
+    }
+  },
+  "products": {
+    "title": "Prodotti",
+    "subtitle": "Registra prodotti, genera webhook di vendita e configura il funnel di messaggi.",
+    "addProduct": "Nuovo prodotto",
+    "session": "Sessione",
+    "stepsCount": "{{count}} passo",
+    "stepsCount_plural": "{{count}} passi",
+    "webhookUrls": "Webhook di vendita",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "Generico"
+    },
+    "empty": {
+      "title": "Ancora nessun prodotto",
+      "description": "Crea un prodotto per generare i suoi webhook e il funnel di messaggi."
+    },
+    "noSessions": "Crea prima una sessione connessa — i prodotti hanno bisogno di una sessione per inviare messaggi.",
+    "name": "Nome",
+    "namePlaceholder": "es. Corso online",
+    "selectSession": "Seleziona una sessione",
+    "funnelSteps": "Funnel di messaggi",
+    "placeholderHint": "Usa {{name}} e {{phone}} per personalizzare il messaggio.",
+    "stepN": "Passo {{n}}",
+    "moveUp": "Sposta su",
+    "moveDown": "Sposta giù",
+    "removeStep": "Rimuovi passo",
+    "stepType": "Tipo",
+    "stepTypes": {
+      "text": "Testo",
+      "image": "Immagine",
+      "video": "Video",
+      "document": "Documento"
+    },
+    "delayMinutes": "Ritardo (minuti)",
+    "replaceMedia": "Sostituisci file",
+    "uploadMedia": "Carica file",
+    "stepText": "Messaggio",
+    "caption": "Didascalia",
+    "textPlaceholder": "Scrivi il messaggio...",
+    "addStep": "Aggiungi passo",
+    "editTitle": "Modifica prodotto",
+    "createTitle": "Nuovo prodotto",
+    "testTitle": "Prova funnel",
+    "testDescription": "Invia il funnel completo a un numero WhatsApp per un’anteprima.",
+    "phone": "Numero WhatsApp",
+    "sendTest": "Invia prova",
+    "deleteTitle": "Elimina prodotto",
+    "deleteConfirm": "Eliminare \"{{name}}\"? Questo non fermerà i funnel già in esecuzione.",
+    "actions": {
+      "test": "Prova",
+      "copy": "Copia URL"
+    },
+    "toasts": {
+      "copyFailed": "Impossibile copiare l’URL.",
+      "uploadFailed": "Caricamento non riuscito: {{message}}",
+      "updated": "Prodotto aggiornato.",
+      "created": "Prodotto creato.",
+      "saveFailed": "Impossibile salvare: {{message}}",
+      "deleted": "Prodotto eliminato.",
+      "deleteFailed": "Impossibile eliminare: {{message}}",
+      "testSent": "Funnel di prova avviato.",
+      "testFailed": "Prova non riuscita: {{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "Invii",
+    "subtitle": "Monitora i funnel di messaggi in esecuzione e completati.",
+    "stats": {
+      "running": "In esecuzione",
+      "completedToday": "Completati oggi",
+      "failedToday": "Falliti oggi"
+    },
+    "allProducts": "Tutti i prodotti",
+    "allStatuses": "Tutti gli stati",
+    "statuses": {
+      "running": "In esecuzione",
+      "completed": "Completato",
+      "cancelled": "Annullato",
+      "failed": "Fallito"
+    },
+    "empty": {
+      "title": "Ancora nessun invio",
+      "description": "I funnel appaiono qui quando una vendita viene approvata."
+    },
+    "unknownProduct": "Prodotto sconosciuto",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "Generico"
+    },
+    "customerPhone": "Telefono",
+    "startedAt": "Avviato il",
+    "nextStepAt": "Prossimo passo il",
+    "completedAt": "Completato il",
+    "stepN": "Passo {{n}}",
+    "stepResults": {
+      "sent": "Inviato",
+      "failed": "Fallito",
+      "skipped": "Saltato",
+      "pending": "In attesa"
+    },
+    "cancel": "Annulla funnel",
+    "cancelTitle": "Annulla funnel",
+    "cancelConfirm": "Annullare il funnel di {{name}}? I passi rimanenti non verranno inviati.",
+    "toasts": {
+      "cancelled": "Funnel annullato.",
+      "cancelFailed": "Impossibile annullare: {{message}}"
     }
   }
 }

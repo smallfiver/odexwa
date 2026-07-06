@@ -809,7 +809,9 @@
         "confirm": "要重新產生 {{id}} 的簽署密鑰嗎？目前的密鑰會立即失效。",
         "action": "重新產生"
       },
-      "edit": { "title": "編輯 {{id}}" },
+      "edit": {
+        "title": "編輯 {{id}}"
+      },
       "delete": {
         "title": "刪除執行個體",
         "confirm": "要刪除執行個體 {{id}} 嗎？其連入 URL 和密鑰會立即失效。",
@@ -836,6 +838,116 @@
         "secretRegenerated": "密鑰已重新產生",
         "actionFailed": "操作失敗"
       }
+    }
+  },
+  "products": {
+    "title": "產品",
+    "subtitle": "註冊產品、產生銷售 Webhook 並設定訊息漏斗。",
+    "addProduct": "新增產品",
+    "session": "工作階段",
+    "stepsCount": "{{count}} 步",
+    "stepsCount_plural": "{{count}} 步",
+    "webhookUrls": "銷售 Webhook",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "通用"
+    },
+    "empty": {
+      "title": "尚未有產品",
+      "description": "建立產品以產生其 Webhook 和訊息漏斗。"
+    },
+    "noSessions": "請先建立已連線的工作階段——產品需要工作階段才能傳送訊息。",
+    "name": "名稱",
+    "namePlaceholder": "例如：線上課程",
+    "selectSession": "選擇工作階段",
+    "funnelSteps": "訊息漏斗",
+    "placeholderHint": "使用 {{name}} 和 {{phone}} 來個人化訊息。",
+    "stepN": "第 {{n}} 步",
+    "moveUp": "上移",
+    "moveDown": "下移",
+    "removeStep": "移除步驟",
+    "stepType": "類型",
+    "stepTypes": {
+      "text": "文字",
+      "image": "圖片",
+      "video": "影片",
+      "document": "文件"
+    },
+    "delayMinutes": "延遲（分鐘）",
+    "replaceMedia": "取代檔案",
+    "uploadMedia": "上傳檔案",
+    "stepText": "訊息",
+    "caption": "說明文字",
+    "textPlaceholder": "輸入訊息...",
+    "addStep": "新增步驟",
+    "editTitle": "編輯產品",
+    "createTitle": "新增產品",
+    "testTitle": "測試漏斗",
+    "testDescription": "將完整漏斗傳送至某個 WhatsApp 號碼以進行預覽。",
+    "phone": "WhatsApp 號碼",
+    "sendTest": "傳送測試",
+    "deleteTitle": "刪除產品",
+    "deleteConfirm": "刪除「{{name}}」？這不會停止已在執行的漏斗。",
+    "actions": {
+      "test": "測試",
+      "copy": "複製連結"
+    },
+    "toasts": {
+      "copyFailed": "無法複製連結。",
+      "uploadFailed": "上傳失敗：{{message}}",
+      "updated": "產品已更新。",
+      "created": "產品已建立。",
+      "saveFailed": "無法儲存：{{message}}",
+      "deleted": "產品已刪除。",
+      "deleteFailed": "無法刪除：{{message}}",
+      "testSent": "測試漏斗已啟動。",
+      "testFailed": "測試失敗：{{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "傳送記錄",
+    "subtitle": "追蹤執行中和已完成的訊息漏斗。",
+    "stats": {
+      "running": "執行中",
+      "completedToday": "今日完成",
+      "failedToday": "今日失敗"
+    },
+    "allProducts": "所有產品",
+    "allStatuses": "所有狀態",
+    "statuses": {
+      "running": "執行中",
+      "completed": "已完成",
+      "cancelled": "已取消",
+      "failed": "失敗"
+    },
+    "empty": {
+      "title": "尚未有傳送記錄",
+      "description": "當銷售獲批時，漏斗會顯示於此。"
+    },
+    "unknownProduct": "未知產品",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "通用"
+    },
+    "customerPhone": "電話",
+    "startedAt": "開始時間",
+    "nextStepAt": "下一步時間",
+    "completedAt": "完成時間",
+    "stepN": "第 {{n}} 步",
+    "stepResults": {
+      "sent": "已傳送",
+      "failed": "失敗",
+      "skipped": "已略過",
+      "pending": "待處理"
+    },
+    "cancel": "取消漏斗",
+    "cancelTitle": "取消漏斗",
+    "cancelConfirm": "取消 {{name}} 的漏斗？剩餘步驟將不會傳送。",
+    "toasts": {
+      "cancelled": "漏斗已取消。",
+      "cancelFailed": "無法取消：{{message}}"
     }
   }
 }

@@ -810,7 +810,9 @@
         "confirm": "ליצור מחדש את מפתח החתימה הסודי של {{id}}? הסוד הנוכחי יפסיק לעבוד באופן מיידי.",
         "action": "יצירה מחדש"
       },
-      "edit": { "title": "עריכת {{id}}" },
+      "edit": {
+        "title": "עריכת {{id}}"
+      },
       "delete": {
         "title": "מחיקת מופע",
         "confirm": "למחוק את המופע {{id}}? כתובת ה-URL והסוד שלו יפסיקו לעבוד באופן מיידי.",
@@ -837,6 +839,116 @@
         "secretRegenerated": "הסוד נוצר מחדש",
         "actionFailed": "הפעולה נכשלה"
       }
+    }
+  },
+  "products": {
+    "title": "מוצרים",
+    "subtitle": "רשום מוצרים, צור Webhooks למכירות והגדר את משפך ההודעות.",
+    "addProduct": "מוצר חדש",
+    "session": "הפעלה",
+    "stepsCount": "שלב {{count}}",
+    "stepsCount_plural": "{{count}} שלבים",
+    "webhookUrls": "Webhooks למכירות",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "כללי"
+    },
+    "empty": {
+      "title": "אין עדיין מוצרים",
+      "description": "צור מוצר כדי ליצור את ה-Webhooks ומשפך ההודעות שלו."
+    },
+    "noSessions": "צור תחילה הפעלה מחוברת — מוצרים זקוקים להפעלה כדי לשלוח הודעות.",
+    "name": "שם",
+    "namePlaceholder": "לדוגמה: קורס מקוון",
+    "selectSession": "בחר הפעלה",
+    "funnelSteps": "משפך הודעות",
+    "placeholderHint": "השתמש ב-{{name}} וב-{{phone}} כדי להתאים אישית את ההודעה.",
+    "stepN": "שלב {{n}}",
+    "moveUp": "העבר למעלה",
+    "moveDown": "העבר למטה",
+    "removeStep": "הסר שלב",
+    "stepType": "סוג",
+    "stepTypes": {
+      "text": "טקסט",
+      "image": "תמונה",
+      "video": "וידאו",
+      "document": "מסמך"
+    },
+    "delayMinutes": "עיכוב (דקות)",
+    "replaceMedia": "החלף קובץ",
+    "uploadMedia": "העלה קובץ",
+    "stepText": "הודעה",
+    "caption": "כיתוב",
+    "textPlaceholder": "הקלד את ההודעה...",
+    "addStep": "הוסף שלב",
+    "editTitle": "ערוך מוצר",
+    "createTitle": "מוצר חדש",
+    "testTitle": "בדוק משפך",
+    "testDescription": "שלח את המשפך המלא למספר WhatsApp כדי לצפות בתצוגה מקדימה.",
+    "phone": "מספר WhatsApp",
+    "sendTest": "שלח בדיקה",
+    "deleteTitle": "מחק מוצר",
+    "deleteConfirm": "למחוק את \"{{name}}\"? פעולה זו לא תעצור משפכים שכבר פועלים.",
+    "actions": {
+      "test": "בדוק",
+      "copy": "העתק כתובת"
+    },
+    "toasts": {
+      "copyFailed": "לא ניתן להעתיק את הכתובת.",
+      "uploadFailed": "ההעלאה נכשלה: {{message}}",
+      "updated": "המוצר עודכן.",
+      "created": "המוצר נוצר.",
+      "saveFailed": "לא ניתן לשמור: {{message}}",
+      "deleted": "המוצר נמחק.",
+      "deleteFailed": "לא ניתן למחוק: {{message}}",
+      "testSent": "משפך הבדיקה הופעל.",
+      "testFailed": "הבדיקה נכשלה: {{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "שליחות",
+    "subtitle": "עקוב אחר משפכי הודעות פעילים ושהסתיימו.",
+    "stats": {
+      "running": "פעיל",
+      "completedToday": "הושלמו היום",
+      "failedToday": "נכשלו היום"
+    },
+    "allProducts": "כל המוצרים",
+    "allStatuses": "כל הסטטוסים",
+    "statuses": {
+      "running": "פעיל",
+      "completed": "הושלם",
+      "cancelled": "בוטל",
+      "failed": "נכשל"
+    },
+    "empty": {
+      "title": "אין עדיין שליחות",
+      "description": "משפכים מופיעים כאן כאשר מכירה מאושרת."
+    },
+    "unknownProduct": "מוצר לא ידוע",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "כללי"
+    },
+    "customerPhone": "טלפון",
+    "startedAt": "התחיל ב",
+    "nextStepAt": "השלב הבא ב",
+    "completedAt": "הושלם ב",
+    "stepN": "שלב {{n}}",
+    "stepResults": {
+      "sent": "נשלח",
+      "failed": "נכשל",
+      "skipped": "דולג",
+      "pending": "ממתין"
+    },
+    "cancel": "בטל משפך",
+    "cancelTitle": "בטל משפך",
+    "cancelConfirm": "לבטל את המשפך של {{name}}? השלבים הנותרים לא יישלחו.",
+    "toasts": {
+      "cancelled": "המשפך בוטל.",
+      "cancelFailed": "לא ניתן לבטל: {{message}}"
     }
   }
 }
