@@ -46,7 +46,11 @@ export class FunnelExecutionsController {
   @RequireRole(ApiKeyRole.OPERATOR)
   @ApiOperation({ summary: 'Cancel a running execution' })
   @ApiParam({ name: 'id', description: 'Execution ID' })
-  @ApiResponse({ status: 201, description: 'Execution cancelled (or already finished)', type: FunnelExecutionResponseDto })
+  @ApiResponse({
+    status: 201,
+    description: 'Execution cancelled (or already finished)',
+    type: FunnelExecutionResponseDto,
+  })
   @ApiResponse({ status: 404, description: 'Execution not found' })
   cancel(@Param('id') id: string): Promise<FunnelExecutionResponseDto> {
     return this.funnelService.cancelExecution(id);

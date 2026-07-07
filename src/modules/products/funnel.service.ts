@@ -5,10 +5,7 @@ import { createLogger } from '../../common/services/logger.service';
 import { normalizeBrazilianPhoneToChatId } from '../sales-webhook/phone.util';
 import { Product } from './entities/product.entity';
 import { FunnelStep } from './entities/funnel-step.entity';
-import {
-  FunnelExecution,
-  FunnelExecutionSource,
-} from './entities/funnel-execution.entity';
+import { FunnelExecution, FunnelExecutionSource } from './entities/funnel-execution.entity';
 import { FunnelExecutionResponseDto, TestFunnelDto } from './dto/product.dto';
 
 export interface ParsedSale {
@@ -20,6 +17,13 @@ export interface ParsedSale {
 // Ignore a webhook if a running execution for the same product+chatId was created within this
 // window — protects against checkout platforms firing the same approval more than once.
 const DEDUPE_WINDOW_MS = 10 * 60 * 1000;
+
+// Coerce an unknown webhook field to a plain string without risking '[object Object]' output.
+function asText(value: unknown): string {
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  return '';
+}
 
 @Injectable()
 export class FunnelService {
@@ -40,20 +44,19 @@ export class FunnelService {
     const customer = (body.customer as Record<string, unknown>) || {};
     const statusEnum = Number(body.sale_status_enum);
     return {
-      customerName: String(customer.full_name || ''),
+      customerName: asText(customer.full_name),
       customerPhone:
-        String(customer.phone_formated_ddi || '') ||
-        `${customer.phone_area_code || ''}${customer.phone_number || ''}`,
+        asText(customer.phone_formated_ddi) || `${asText(customer.phone_area_code)}${asText(customer.phone_number)}`,
       approved: statusEnum === 2 || statusEnum === 10,
     };
   }
 
   parseKirvano(body: Record<string, unknown>): ParsedSale {
     const customer = (body.customer as Record<string, unknown>) || {};
-    const event = String(body.event || '');
+    const event = asText(body.event);
     return {
-      customerName: String(customer.name || ''),
-      customerPhone: String(customer.phone_number || ''),
+      customerName: asText(customer.name),
+      customerPhone: asText(customer.phone_number),
       approved: event === 'SALE_APPROVED',
     };
   }
@@ -63,12 +66,12 @@ export class FunnelService {
    * treats "aprovada"/"approved"/"paid" (case-insensitive) as an approved sale.
    */
   parseGeneric(body: Record<string, unknown>): ParsedSale {
-    const name = body.nome ?? body.name ?? body.customerName ?? '';
-    const phone = body.telefone ?? body.phone ?? body.customerPhone ?? '';
-    const status = String(body.status ?? '').trim().toLowerCase();
+    const name = asText(body.nome ?? body.name ?? body.customerName);
+    const phone = asText(body.telefone ?? body.phone ?? body.customerPhone);
+    const status = asText(body.status).trim().toLowerCase();
     return {
-      customerName: String(name || ''),
-      customerPhone: String(phone || ''),
+      customerName: name,
+      customerPhone: phone,
       approved: ['aprovada', 'aprovado', 'approved', 'paid'].includes(status),
     };
   }
@@ -220,7 +223,11 @@ export class FunnelService {
     return executions.map(e => this.toResponse(e, nameById.get(e.productId), counts.get(e.productId) ?? 0));
   }
 
-  private toResponse(e: FunnelExecution, productName: string | undefined, totalSteps: number): FunnelExecutionResponseDto {
+  private toResponse(
+    e: FunnelExecution,
+    productName: string | undefined,
+    totalSteps: number,
+  ): FunnelExecutionResponseDto {
     return {
       id: e.id,
       productId: e.productId,

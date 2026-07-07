@@ -11,6 +11,13 @@ interface SaleInfo {
   approved: boolean;
 }
 
+// Coerce an unknown webhook field to a plain string without risking '[object Object]' output.
+function asText(value: unknown): string {
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  return '';
+}
+
 @Injectable()
 export class SalesWebhookService {
   private readonly logger = createLogger('SalesWebhookService');
@@ -42,11 +49,10 @@ export class SalesWebhookService {
     const statusEnum = Number(body.sale_status_enum);
 
     const info: SaleInfo = {
-      customerName: String(customer.full_name || ''),
+      customerName: asText(customer.full_name),
       customerPhone:
-        String(customer.phone_formated_ddi || '') ||
-        `${customer.phone_area_code || ''}${customer.phone_number || ''}`,
-      productName: String(product.name || ''),
+        asText(customer.phone_formated_ddi) || `${asText(customer.phone_area_code)}${asText(customer.phone_number)}`,
+      productName: asText(product.name),
       approved: statusEnum === 2 || statusEnum === 10,
     };
 
@@ -61,12 +67,12 @@ export class SalesWebhookService {
     const customer = (body.customer as Record<string, unknown>) || {};
     const products = (body.products as Record<string, unknown>[]) || [];
     const firstProduct = products[0] || {};
-    const event = String(body.event || '');
+    const event = asText(body.event);
 
     const info: SaleInfo = {
-      customerName: String(customer.name || ''),
-      customerPhone: String(customer.phone_number || ''),
-      productName: String(firstProduct.name || firstProduct.offer_name || ''),
+      customerName: asText(customer.name),
+      customerPhone: asText(customer.phone_number),
+      productName: asText(firstProduct.name) || asText(firstProduct.offer_name),
       approved: event === 'SALE_APPROVED',
     };
 

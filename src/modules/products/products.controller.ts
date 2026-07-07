@@ -54,7 +54,9 @@ export class ProductsController {
   @ApiOperation({ summary: 'Upload a media file for a funnel step' })
   @ApiResponse({ status: 201, description: 'Media stored', type: MediaUploadResponseDto })
   @ApiResponse({ status: 400, description: 'Missing, oversized, or unsupported media' })
-  uploadMedia(@UploadedFile() file: { buffer?: Buffer; originalname?: string; mimetype?: string; size?: number }): Promise<MediaUploadResponseDto> {
+  uploadMedia(
+    @UploadedFile() file: { buffer?: Buffer; originalname?: string; mimetype?: string; size?: number },
+  ): Promise<MediaUploadResponseDto> {
     return this.productsService.saveMedia(file || {});
   }
 

@@ -25,17 +25,17 @@ describe('FunnelSchedulerService', () => {
     executionRepo = {
       find: jest.fn(),
       findOne: jest.fn(),
-      save: jest.fn(async e => e),
+      save: jest.fn((e: FunnelExecution): Promise<FunnelExecution> => Promise.resolve(e)),
     } as never;
-    stepRepo = { find: jest.fn() } as never;
-    productRepo = { findOne: jest.fn() } as never;
+    stepRepo = { find: jest.fn() };
+    productRepo = { findOne: jest.fn() };
     messageService = {
       sendText: jest.fn(),
       sendImage: jest.fn(),
       sendVideo: jest.fn(),
       sendDocument: jest.fn(),
-    } as never;
-    productsService = { resolveMediaPath: jest.fn() } as never;
+    };
+    productsService = { resolveMediaPath: jest.fn() };
 
     service = new FunnelSchedulerService(
       executionRepo as unknown as Repository<FunnelExecution>,
@@ -86,7 +86,12 @@ describe('FunnelSchedulerService', () => {
 
     it("returns a 'sent' result when the message is delivered", async () => {
       messageService.sendText.mockResolvedValue(undefined as never);
-      const execution = { currentStepIndex: 0, stepResults: [], chatId: 'c', customerName: 'A' } as unknown as FunnelExecution;
+      const execution = {
+        currentStepIndex: 0,
+        stepResults: [],
+        chatId: 'c',
+        customerName: 'A',
+      } as unknown as FunnelExecution;
       const result = (await trySend(execution)) as { status: string; sentAt: string };
       expect(result.status).toBe('sent');
       expect(result.sentAt).toBeTruthy();
@@ -95,7 +100,12 @@ describe('FunnelSchedulerService', () => {
 
     it("returns 'retry' and stashes firstAttemptAt on the first failure", async () => {
       messageService.sendText.mockRejectedValue(new Error('offline'));
-      const execution = { currentStepIndex: 0, stepResults: [], chatId: 'c', customerName: 'A' } as unknown as FunnelExecution;
+      const execution = {
+        currentStepIndex: 0,
+        stepResults: [],
+        chatId: 'c',
+        customerName: 'A',
+      } as unknown as FunnelExecution;
       const result = await trySend(execution);
       expect(result).toBe('retry');
       expect(execution.stepResults[0]).toMatchObject({ status: 'failed', error: 'offline' });
@@ -123,7 +133,12 @@ describe('FunnelSchedulerService', () => {
 
     it('cancels the execution if its product was deleted', async () => {
       productRepo.findOne.mockResolvedValue(null);
-      const execution = { id: 'e1', productId: 'gone', currentStepIndex: 0, stepResults: [] } as unknown as FunnelExecution;
+      const execution = {
+        id: 'e1',
+        productId: 'gone',
+        currentStepIndex: 0,
+        stepResults: [],
+      } as unknown as FunnelExecution;
       await process(execution);
       expect(execution.status).toBe('cancelled');
       expect(execution.completedAt).toBeInstanceOf(Date);

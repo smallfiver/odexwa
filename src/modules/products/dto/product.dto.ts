@@ -14,7 +14,11 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import type { FunnelStepType } from '../entities/funnel-step.entity';
-import type { FunnelExecutionSource, FunnelExecutionStatus, FunnelStepResult } from '../entities/funnel-execution.entity';
+import type {
+  FunnelExecutionSource,
+  FunnelExecutionStatus,
+  FunnelStepResult,
+} from '../entities/funnel-execution.entity';
 
 export const MAX_PRODUCT_NAME_LENGTH = 100;
 export const MAX_STEP_TEXT_LENGTH = 4096;
@@ -38,7 +42,9 @@ export class FunnelStepInputDto {
   @Max(MAX_DELAY_MINUTES)
   delayMinutes: number;
 
-  @ApiPropertyOptional({ description: 'Message body (text) or media caption; supports {{customerName}}/{{productName}}' })
+  @ApiPropertyOptional({
+    description: 'Message body (text) or media caption; supports {{customerName}}/{{productName}}',
+  })
   @IsOptional()
   @IsString()
   @MaxLength(MAX_STEP_TEXT_LENGTH)

@@ -19,11 +19,13 @@ describe('FunnelService', () => {
     executionRepo = {
       findOne: jest.fn(),
       find: jest.fn(),
-      create: jest.fn(e => e),
-      save: jest.fn(async e => ({ id: 'exec-1', createdAt: new Date(), ...e })),
+      create: jest.fn((e: Partial<FunnelExecution>): FunnelExecution => e as FunnelExecution),
+      save: jest.fn((e: Partial<FunnelExecution>): Promise<FunnelExecution> =>
+        Promise.resolve({ id: 'exec-1', createdAt: new Date(), ...e } as FunnelExecution),
+      ),
     } as never;
-    stepRepo = { find: jest.fn().mockResolvedValue([]), count: jest.fn() } as never;
-    productRepo = { findOne: jest.fn(), find: jest.fn() } as never;
+    stepRepo = { find: jest.fn().mockResolvedValue([]), count: jest.fn() };
+    productRepo = { findOne: jest.fn(), find: jest.fn() };
 
     service = new FunnelService(
       executionRepo as unknown as Repository<FunnelExecution>,

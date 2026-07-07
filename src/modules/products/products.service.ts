@@ -1,9 +1,9 @@
-import { Injectable, NotFoundException, ConflictException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { randomBytes } from 'crypto';
 import { promises as fs } from 'fs';
-import { join, extname } from 'path';
+import { join } from 'path';
 import { createLogger } from '../../common/services/logger.service';
 import { isUniqueConstraintError } from '../../common/utils/unique-constraint.util';
 import { Product } from './entities/product.entity';
@@ -116,8 +116,7 @@ export class ProductsService {
     await this.productRepo.save(product);
 
     // steps present (even empty array) fully replaces the funnel; absent leaves it untouched.
-    const steps =
-      dto.steps !== undefined ? await this.replaceSteps(id, dto.steps) : await this.loadSteps(id);
+    const steps = dto.steps !== undefined ? await this.replaceSteps(id, dto.steps) : await this.loadSteps(id);
 
     this.logger.log(`Updated product ${id}`);
     return this.toResponse(product, steps);
@@ -142,7 +141,12 @@ export class ProductsService {
   }
 
   /** Persist an uploaded media file to disk and return the reference stored on a funnel step. */
-  async saveMedia(file: { buffer?: Buffer; originalname?: string; mimetype?: string; size?: number }): Promise<MediaUploadResponseDto> {
+  async saveMedia(file: {
+    buffer?: Buffer;
+    originalname?: string;
+    mimetype?: string;
+    size?: number;
+  }): Promise<MediaUploadResponseDto> {
     if (!file?.buffer || !file.buffer.length) {
       throw new BadRequestException('No file uploaded');
     }
@@ -189,9 +193,9 @@ export class ProductsService {
         type: input.type,
         delayMinutes: input.delayMinutes,
         text: input.text ?? '',
-        mediaPath: input.type === 'text' ? null : input.mediaPath ?? null,
-        mediaFilename: input.type === 'text' ? null : input.mediaFilename ?? null,
-        mediaMimetype: input.type === 'text' ? null : input.mediaMimetype ?? null,
+        mediaPath: input.type === 'text' ? null : (input.mediaPath ?? null),
+        mediaFilename: input.type === 'text' ? null : (input.mediaFilename ?? null),
+        mediaMimetype: input.type === 'text' ? null : (input.mediaMimetype ?? null),
       }),
     );
     return this.stepRepo.save(entities);
