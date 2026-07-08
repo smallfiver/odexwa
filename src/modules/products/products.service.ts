@@ -22,7 +22,10 @@ import {
 // Media accepted for funnel steps. WhatsApp caps media around 16MB; keep a matching ceiling
 // so an oversized upload is rejected up front rather than failing at send time.
 const MAX_MEDIA_BYTES = 16 * 1024 * 1024;
-const MEDIA_DIR = join(process.cwd(), 'uploads', 'funnel-media');
+// Must live under ./data — in production that's the ONLY writable, persistent volume
+// (the container rootfs is mounted read-only). Anywhere else EROFS-fails on upload and would
+// be lost on restart. Matches the project's "all writable state under /app/data" convention.
+const MEDIA_DIR = join(process.cwd(), 'data', 'funnel-media');
 
 const ALLOWED_MEDIA_MIMETYPES: Record<string, string> = {
   'image/jpeg': '.jpg',

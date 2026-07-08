@@ -41,7 +41,7 @@ export class FunnelStep {
   @Column({ type: 'text', default: '' })
   text: string;
 
-  // Path on disk (uploads/funnel-media/...) for media steps; null for text steps.
+  // Basename of the stored file under data/funnel-media/ for media steps; null for text steps.
   @Column({ type: 'varchar', length: 1024, nullable: true })
   mediaPath: string | null;
 
