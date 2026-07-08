@@ -317,6 +317,7 @@
     "subtitle": "Register products, generate sale webhooks and configure the message funnel.",
     "addProduct": "New product",
     "session": "Session",
+    "stepsLabel": "Steps",
     "stepsCount": "{{count}} step",
     "stepsCount_plural": "{{count}} steps",
     "webhookUrls": "Sale webhooks",
@@ -401,7 +402,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "Generic"
+      "generic": "Generic",
+      "test": "Test"
     },
     "customerPhone": "Phone",
     "startedAt": "Started at",

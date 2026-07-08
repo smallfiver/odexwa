@@ -845,6 +845,7 @@
     "subtitle": "Enregistrez des produits, générez des webhooks de vente et configurez le tunnel de messages.",
     "addProduct": "Nouveau produit",
     "session": "Session",
+    "stepsLabel": "Étapes",
     "stepsCount": "{{count}} étape",
     "stepsCount_plural": "{{count}} étapes",
     "webhookUrls": "Webhooks de vente",
@@ -929,7 +930,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "Générique"
+      "generic": "Générique",
+      "test": "Test"
     },
     "customerPhone": "Téléphone",
     "startedAt": "Démarré le",

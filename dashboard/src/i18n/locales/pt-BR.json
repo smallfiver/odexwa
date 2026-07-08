@@ -317,6 +317,7 @@
     "subtitle": "Cadastre produtos, gere webhooks de venda e configure o funil de mensagens.",
     "addProduct": "Novo produto",
     "session": "Sessão",
+    "stepsLabel": "Etapas",
     "stepsCount": "{{count}} etapa",
     "stepsCount_plural": "{{count}} etapas",
     "webhookUrls": "Webhooks de venda",
@@ -401,7 +402,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "Genérico"
+      "generic": "Genérico",
+      "test": "Teste"
     },
     "customerPhone": "Telefone",
     "startedAt": "Iniciado em",

@@ -368,7 +368,7 @@ export function Products() {
                 <div className="product-meta">
                   <span className="product-meta-label">{t('products.session')}</span>
                   <span className="product-meta-value">{sessionName(product.sessionId)}</span>
-                  <span className="product-meta-label">{t('products.stepsCount')}</span>
+                  <span className="product-meta-label">{t('products.stepsLabel')}</span>
                   <span className="product-meta-value">{product.steps.length}</span>
                 </div>
 

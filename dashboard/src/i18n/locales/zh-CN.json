@@ -845,6 +845,7 @@
     "subtitle": "注册产品、生成销售 Webhook 并配置消息漏斗。",
     "addProduct": "新建产品",
     "session": "会话",
+    "stepsLabel": "步骤",
     "stepsCount": "{{count}} 步",
     "stepsCount_plural": "{{count}} 步",
     "webhookUrls": "销售 Webhook",
@@ -929,7 +930,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "通用"
+      "generic": "通用",
+      "test": "测试"
     },
     "customerPhone": "电话",
     "startedAt": "开始时间",

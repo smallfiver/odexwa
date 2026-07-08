@@ -846,6 +846,7 @@
     "subtitle": "רשום מוצרים, צור Webhooks למכירות והגדר את משפך ההודעות.",
     "addProduct": "מוצר חדש",
     "session": "הפעלה",
+    "stepsLabel": "שלבים",
     "stepsCount": "שלב {{count}}",
     "stepsCount_plural": "{{count}} שלבים",
     "webhookUrls": "Webhooks למכירות",
@@ -930,7 +931,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "כללי"
+      "generic": "כללי",
+      "test": "בדיקה"
     },
     "customerPhone": "טלפון",
     "startedAt": "התחיל ב",

@@ -845,6 +845,7 @@
     "subtitle": "Registra prodotti, genera webhook di vendita e configura il funnel di messaggi.",
     "addProduct": "Nuovo prodotto",
     "session": "Sessione",
+    "stepsLabel": "Passi",
     "stepsCount": "{{count}} passo",
     "stepsCount_plural": "{{count}} passi",
     "webhookUrls": "Webhook di vendita",
@@ -929,7 +930,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "Generico"
+      "generic": "Generico",
+      "test": "Test"
     },
     "customerPhone": "Telefono",
     "startedAt": "Avviato il",

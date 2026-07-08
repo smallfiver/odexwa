@@ -845,6 +845,7 @@
     "subtitle": "Registra productos, genera webhooks de venta y configura el embudo de mensajes.",
     "addProduct": "Nuevo producto",
     "session": "Sesión",
+    "stepsLabel": "Pasos",
     "stepsCount": "{{count}} paso",
     "stepsCount_plural": "{{count}} pasos",
     "webhookUrls": "Webhooks de venta",
@@ -929,7 +930,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "Genérico"
+      "generic": "Genérico",
+      "test": "Prueba"
     },
     "customerPhone": "Teléfono",
     "startedAt": "Iniciado el",

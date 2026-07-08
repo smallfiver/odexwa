@@ -845,6 +845,7 @@
     "subtitle": "ఉత్పత్తులను నమోదు చేయండి, అమ్మకపు Webhookలను రూపొందించండి మరియు సందేశ ఫన్నెల్‌ను కాన్ఫిగర్ చేయండి.",
     "addProduct": "కొత్త ఉత్పత్తి",
     "session": "సెషన్",
+    "stepsLabel": "దశలు",
     "stepsCount": "{{count}} దశ",
     "stepsCount_plural": "{{count}} దశలు",
     "webhookUrls": "అమ్మకపు Webhookలు",
@@ -929,7 +930,8 @@
     "sources": {
       "perfectpay": "PerfectPay",
       "kirvano": "Kirvano",
-      "generico": "సాధారణం"
+      "generic": "సాధారణం",
+      "test": "పరీక్ష"
     },
     "customerPhone": "ఫోన్",
     "startedAt": "ప్రారంభమైంది",
