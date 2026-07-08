@@ -70,6 +70,8 @@
     "sessions": "Sesiones",
     "chats": "Chats",
     "webhooks": "Webhooks",
+    "products": "Productos",
+    "dispatches": "Disparos",
     "apiKeys": "Claves API",
     "messageTester": "Probador de mensajes",
     "infrastructure": "Infraestructura",
@@ -807,7 +809,9 @@
         "confirm": "¿Regenerar el secreto de firma de {{id}}? El secreto actual dejará de funcionar de inmediato.",
         "action": "Regenerar"
       },
-      "edit": { "title": "Editar {{id}}" },
+      "edit": {
+        "title": "Editar {{id}}"
+      },
       "delete": {
         "title": "Eliminar instancia",
         "confirm": "¿Eliminar la instancia {{id}}? Su URL de entrada y secreto dejarán de funcionar de inmediato.",
@@ -834,6 +838,118 @@
         "secretRegenerated": "Secreto regenerado",
         "actionFailed": "La acción falló"
       }
+    }
+  },
+  "products": {
+    "title": "Productos",
+    "subtitle": "Registra productos, genera webhooks de venta y configura el embudo de mensajes.",
+    "addProduct": "Nuevo producto",
+    "session": "Sesión",
+    "stepsLabel": "Pasos",
+    "stepsCount": "{{count}} paso",
+    "stepsCount_plural": "{{count}} pasos",
+    "webhookUrls": "Webhooks de venta",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "Genérico"
+    },
+    "empty": {
+      "title": "Aún no hay productos",
+      "description": "Crea un producto para generar sus webhooks y el embudo de mensajes."
+    },
+    "noSessions": "Crea primero una sesión conectada — los productos necesitan una sesión para enviar mensajes.",
+    "name": "Nombre",
+    "namePlaceholder": "ej. Curso online",
+    "selectSession": "Selecciona una sesión",
+    "funnelSteps": "Embudo de mensajes",
+    "placeholderHint": "Usa {{name}} y {{phone}} para personalizar el mensaje.",
+    "stepN": "Paso {{n}}",
+    "moveUp": "Subir",
+    "moveDown": "Bajar",
+    "removeStep": "Quitar paso",
+    "stepType": "Tipo",
+    "stepTypes": {
+      "text": "Texto",
+      "image": "Imagen",
+      "video": "Vídeo",
+      "document": "Documento"
+    },
+    "delayMinutes": "Retraso (minutos)",
+    "replaceMedia": "Reemplazar archivo",
+    "uploadMedia": "Subir archivo",
+    "stepText": "Mensaje",
+    "caption": "Descripción",
+    "textPlaceholder": "Escribe el mensaje...",
+    "addStep": "Agregar paso",
+    "editTitle": "Editar producto",
+    "createTitle": "Nuevo producto",
+    "testTitle": "Probar embudo",
+    "testDescription": "Envía el embudo completo a un número de WhatsApp para previsualizarlo.",
+    "phone": "Número de WhatsApp",
+    "sendTest": "Enviar prueba",
+    "deleteTitle": "Eliminar producto",
+    "deleteConfirm": "¿Eliminar \"{{name}}\"? Esto no detendrá los embudos que ya se están ejecutando.",
+    "actions": {
+      "test": "Probar",
+      "copy": "Copiar URL"
+    },
+    "toasts": {
+      "copyFailed": "No se pudo copiar la URL.",
+      "uploadFailed": "Error al subir: {{message}}",
+      "updated": "Producto actualizado.",
+      "created": "Producto creado.",
+      "saveFailed": "No se pudo guardar: {{message}}",
+      "deleted": "Producto eliminado.",
+      "deleteFailed": "No se pudo eliminar: {{message}}",
+      "testSent": "Embudo de prueba iniciado.",
+      "testFailed": "La prueba falló: {{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "Envíos",
+    "subtitle": "Sigue los embudos de mensajes en ejecución y finalizados.",
+    "stats": {
+      "running": "En ejecución",
+      "completedToday": "Completados hoy",
+      "failedToday": "Fallidos hoy"
+    },
+    "allProducts": "Todos los productos",
+    "allStatuses": "Todos los estados",
+    "statuses": {
+      "running": "En ejecución",
+      "completed": "Completado",
+      "cancelled": "Cancelado",
+      "failed": "Fallido"
+    },
+    "empty": {
+      "title": "Aún no hay envíos",
+      "description": "Los embudos aparecen aquí cuando se aprueba una venta."
+    },
+    "unknownProduct": "Producto desconocido",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generic": "Genérico",
+      "test": "Prueba"
+    },
+    "customerPhone": "Teléfono",
+    "startedAt": "Iniciado el",
+    "nextStepAt": "Próximo paso el",
+    "completedAt": "Completado el",
+    "stepN": "Paso {{n}}",
+    "stepResults": {
+      "sent": "Enviado",
+      "failed": "Fallido",
+      "skipped": "Omitido",
+      "pending": "Pendiente"
+    },
+    "cancel": "Cancelar embudo",
+    "cancelTitle": "Cancelar embudo",
+    "cancelConfirm": "¿Cancelar el embudo de {{name}}? Los pasos restantes no se enviarán.",
+    "toasts": {
+      "cancelled": "Embudo cancelado.",
+      "cancelFailed": "No se pudo cancelar: {{message}}"
     }
   }
 }

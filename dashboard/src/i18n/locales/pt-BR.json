@@ -70,6 +70,8 @@
     "sessions": "Sessões",
     "chats": "Chats",
     "webhooks": "Webhooks",
+    "products": "Produtos",
+    "dispatches": "Disparos",
     "apiKeys": "Chaves API",
     "messageTester": "Testador de mensagens",
     "infrastructure": "Infraestrutura",
@@ -308,6 +310,118 @@
       "step3": "<strong>3.</strong> Toque em <strong>Conectar dispositivo</strong> e depois em <strong>Vincular com número de telefone</strong>",
       "step4": "<strong>4.</strong> Digite no seu celular o código de 8 caracteres mostrado acima",
       "waitingConnection": "Aguardando a conexão do seu celular…"
+    }
+  },
+  "products": {
+    "title": "Produtos",
+    "subtitle": "Cadastre produtos, gere webhooks de venda e configure o funil de mensagens.",
+    "addProduct": "Novo produto",
+    "session": "Sessão",
+    "stepsLabel": "Etapas",
+    "stepsCount": "{{count}} etapa",
+    "stepsCount_plural": "{{count}} etapas",
+    "webhookUrls": "Webhooks de venda",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "Genérico"
+    },
+    "empty": {
+      "title": "Nenhum produto ainda",
+      "description": "Crie um produto para gerar seus webhooks e o funil de mensagens."
+    },
+    "noSessions": "Crie primeiro uma sessão conectada — os produtos precisam de uma sessão para enviar mensagens.",
+    "name": "Nome",
+    "namePlaceholder": "ex.: Curso online",
+    "selectSession": "Selecione uma sessão",
+    "funnelSteps": "Funil de mensagens",
+    "placeholderHint": "Use {{name}} e {{phone}} para personalizar a mensagem.",
+    "stepN": "Etapa {{n}}",
+    "moveUp": "Mover para cima",
+    "moveDown": "Mover para baixo",
+    "removeStep": "Remover etapa",
+    "stepType": "Tipo",
+    "stepTypes": {
+      "text": "Texto",
+      "image": "Imagem",
+      "video": "Vídeo",
+      "document": "Documento"
+    },
+    "delayMinutes": "Atraso (minutos)",
+    "replaceMedia": "Substituir arquivo",
+    "uploadMedia": "Enviar arquivo",
+    "stepText": "Mensagem",
+    "caption": "Legenda",
+    "textPlaceholder": "Digite a mensagem...",
+    "addStep": "Adicionar etapa",
+    "editTitle": "Editar produto",
+    "createTitle": "Novo produto",
+    "testTitle": "Testar funil",
+    "testDescription": "Envie o funil completo para um número de WhatsApp para visualizá-lo.",
+    "phone": "Número de WhatsApp",
+    "sendTest": "Enviar teste",
+    "deleteTitle": "Excluir produto",
+    "deleteConfirm": "Excluir \"{{name}}\"? Isso não interrompe funis já em andamento.",
+    "actions": {
+      "test": "Testar",
+      "copy": "Copiar URL"
+    },
+    "toasts": {
+      "copyFailed": "Não foi possível copiar a URL.",
+      "uploadFailed": "Falha no envio: {{message}}",
+      "updated": "Produto atualizado.",
+      "created": "Produto criado.",
+      "saveFailed": "Não foi possível salvar: {{message}}",
+      "deleted": "Produto excluído.",
+      "deleteFailed": "Não foi possível excluir: {{message}}",
+      "testSent": "Funil de teste iniciado.",
+      "testFailed": "Falha no teste: {{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "Disparos",
+    "subtitle": "Acompanhe os funis de mensagens em andamento e concluídos.",
+    "stats": {
+      "running": "Em andamento",
+      "completedToday": "Concluídos hoje",
+      "failedToday": "Falharam hoje"
+    },
+    "allProducts": "Todos os produtos",
+    "allStatuses": "Todos os status",
+    "statuses": {
+      "running": "Em andamento",
+      "completed": "Concluído",
+      "cancelled": "Cancelado",
+      "failed": "Falhou"
+    },
+    "empty": {
+      "title": "Nenhum disparo ainda",
+      "description": "Os funis aparecem aqui quando uma venda é aprovada."
+    },
+    "unknownProduct": "Produto desconhecido",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generic": "Genérico",
+      "test": "Teste"
+    },
+    "customerPhone": "Telefone",
+    "startedAt": "Iniciado em",
+    "nextStepAt": "Próxima etapa em",
+    "completedAt": "Concluído em",
+    "stepN": "Etapa {{n}}",
+    "stepResults": {
+      "sent": "Enviada",
+      "failed": "Falhou",
+      "skipped": "Ignorada",
+      "pending": "Pendente"
+    },
+    "cancel": "Cancelar funil",
+    "cancelTitle": "Cancelar funil",
+    "cancelConfirm": "Cancelar o funil de {{name}}? As etapas restantes não serão enviadas.",
+    "toasts": {
+      "cancelled": "Funil cancelado.",
+      "cancelFailed": "Não foi possível cancelar: {{message}}"
     }
   },
   "webhooks": {

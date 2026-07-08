@@ -885,3 +885,123 @@ export const statsApi = {
   getOverview: () => request<OverviewStats>('/stats/overview'),
   getMessages: (period: StatsPeriod) => request<MessageStats>(`/stats/messages?period=${period}`),
 };
+
+// =============================================================================
+// Products & Funnel (Produtos + Funil de mensagens) — mirrors src/modules/products
+// =============================================================================
+
+export const FUNNEL_STEP_TYPES = ['text', 'image', 'video', 'document'] as const;
+export type FunnelStepType = (typeof FUNNEL_STEP_TYPES)[number];
+
+export interface FunnelStep {
+  id: string;
+  order: number;
+  type: FunnelStepType;
+  delayMinutes: number;
+  text: string;
+  mediaPath: string | null;
+  mediaFilename: string | null;
+  mediaMimetype: string | null;
+}
+
+export interface FunnelStepInput {
+  type: FunnelStepType;
+  delayMinutes: number;
+  text?: string;
+  mediaPath?: string;
+  mediaFilename?: string;
+  mediaMimetype?: string;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  webhookToken: string;
+  sessionId: string;
+  active: boolean;
+  steps: FunnelStep[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ProductPayload {
+  name: string;
+  sessionId: string;
+  active?: boolean;
+  steps?: FunnelStepInput[];
+}
+
+export interface MediaUploadResponse {
+  mediaPath: string;
+  mediaFilename: string;
+  mediaMimetype: string;
+}
+
+export const FUNNEL_EXECUTION_SOURCES = ['perfectpay', 'kirvano', 'generic', 'test'] as const;
+export type FunnelExecutionSource = (typeof FUNNEL_EXECUTION_SOURCES)[number];
+
+export const FUNNEL_EXECUTION_STATUSES = ['running', 'completed', 'cancelled', 'failed'] as const;
+export type FunnelExecutionStatus = (typeof FUNNEL_EXECUTION_STATUSES)[number];
+
+// Per-step result, indexed by step order (array position). Only processed steps have an entry;
+// pair with the product's steps[i] to render a full timeline.
+export interface FunnelStepResult {
+  status: 'sent' | 'failed' | 'skipped';
+  sentAt?: string;
+  error?: string;
+  firstAttemptAt?: string;
+}
+
+export interface FunnelExecution {
+  id: string;
+  productId: string;
+  productName?: string;
+  customerName: string;
+  customerPhone: string;
+  chatId: string;
+  source: FunnelExecutionSource;
+  currentStepIndex: number;
+  totalSteps: number;
+  nextStepAt: string | null;
+  status: FunnelExecutionStatus;
+  stepResults: FunnelStepResult[];
+  createdAt: string;
+  completedAt: string | null;
+}
+
+export interface FunnelStats {
+  running: number;
+  completedToday: number;
+  failedToday: number;
+}
+
+export const productApi = {
+  list: () => request<Product[]>('/products'),
+  get: (id: string) => request<Product>(`/products/${id}`),
+  create: (data: ProductPayload) =>
+    request<Product>('/products', { method: 'POST', body: JSON.stringify(data) }),
+  update: (id: string, data: Partial<ProductPayload>) =>
+    request<Product>(`/products/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  delete: (id: string) => request<void>(`/products/${id}`, { method: 'DELETE' }),
+  uploadMedia: (file: File) => {
+    const form = new FormData();
+    form.append('file', file);
+    return request<MediaUploadResponse>('/products/media', { method: 'POST', body: form });
+  },
+  test: (id: string, phone: string) =>
+    request<FunnelExecution>(`/products/${id}/test`, { method: 'POST', body: JSON.stringify({ phone }) }),
+};
+
+export const funnelExecutionApi = {
+  list: (params?: { productId?: string; status?: FunnelExecutionStatus }) => {
+    const query = new URLSearchParams();
+    if (params?.productId) query.set('productId', params.productId);
+    if (params?.status) query.set('status', params.status);
+    const queryStr = query.toString();
+    return request<FunnelExecution[]>(`/funnel-executions${queryStr ? `?${queryStr}` : ''}`);
+  },
+  get: (id: string) => request<FunnelExecution>(`/funnel-executions/${id}`),
+  cancel: (id: string) =>
+    request<FunnelExecution>(`/funnel-executions/${id}/cancel`, { method: 'POST' }),
+  stats: () => request<FunnelStats>('/funnel-executions/stats'),
+};

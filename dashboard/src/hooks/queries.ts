@@ -9,12 +9,16 @@ import {
   pluginsApi,
   pluginInstancesApi,
   statsApi,
+  productApi,
+  funnelExecutionApi,
   type Webhook,
   type WebhookFilters,
   type TemplatePayload,
   type StatsPeriod,
   type CreateInstanceInput,
   type UpdateInstanceInput,
+  type ProductPayload,
+  type FunnelExecutionStatus,
 } from '../services/api';
 
 // ── Query Keys ────────────────────────────────────────────────────────
@@ -36,6 +40,12 @@ export const queryKeys = {
   currentEngine: ['engines', 'current'] as const,
   statsOverview: ['stats', 'overview'] as const,
   statsMessages: (period: string) => ['stats', 'messages', period] as const,
+  products: ['products'] as const,
+  product: (id: string) => ['products', id] as const,
+  funnelExecutions: (params?: { productId?: string; status?: FunnelExecutionStatus }) =>
+    ['funnel-executions', params ?? {}] as const,
+  funnelExecution: (id: string) => ['funnel-executions', id] as const,
+  funnelStats: ['funnel-executions', 'stats'] as const,
 };
 
 // ── Session Queries ───────────────────────────────────────────────────
@@ -343,5 +353,109 @@ export function useStatsMessagesQuery(period: StatsPeriod) {
     queryFn: () => statsApi.getMessages(period),
     staleTime: 30_000,
     retry: false,
+  });
+}
+
+// ── Product Queries (Produtos + Funil) ─────────────────────────────────
+
+export function useProductsQuery() {
+  return useQuery({
+    queryKey: queryKeys.products,
+    queryFn: productApi.list,
+    staleTime: 30_000,
+  });
+}
+
+export function useProductQuery(id: string, enabled = true) {
+  return useQuery({
+    queryKey: queryKeys.product(id),
+    queryFn: () => productApi.get(id),
+    enabled: enabled && !!id,
+    staleTime: 30_000,
+  });
+}
+
+export function useCreateProductMutation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: ProductPayload) => productApi.create(data),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: queryKeys.products });
+    },
+  });
+}
+
+export function useUpdateProductMutation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (params: { id: string; data: Partial<ProductPayload> }) =>
+      productApi.update(params.id, params.data),
+    onSuccess: (_product, params) => {
+      void queryClient.invalidateQueries({ queryKey: queryKeys.products });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.product(params.id) });
+    },
+  });
+}
+
+export function useDeleteProductMutation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => productApi.delete(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: queryKeys.products });
+    },
+  });
+}
+
+export function useUploadMediaMutation() {
+  return useMutation({
+    mutationFn: (file: File) => productApi.uploadMedia(file),
+  });
+}
+
+export function useTestFunnelMutation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (params: { id: string; phone: string }) => productApi.test(params.id, params.phone),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['funnel-executions'] });
+    },
+  });
+}
+
+// ── Funnel Execution Queries (Disparos) ────────────────────────────────
+
+export function useFunnelExecutionsQuery(params?: { productId?: string; status?: FunnelExecutionStatus }) {
+  return useQuery({
+    queryKey: queryKeys.funnelExecutions(params),
+    queryFn: () => funnelExecutionApi.list(params),
+    staleTime: 15_000,
+  });
+}
+
+export function useFunnelExecutionQuery(id: string, enabled = true) {
+  return useQuery({
+    queryKey: queryKeys.funnelExecution(id),
+    queryFn: () => funnelExecutionApi.get(id),
+    enabled: enabled && !!id,
+    staleTime: 15_000,
+  });
+}
+
+export function useCancelExecutionMutation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => funnelExecutionApi.cancel(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['funnel-executions'] });
+    },
+  });
+}
+
+export function useFunnelStatsQuery() {
+  return useQuery({
+    queryKey: queryKeys.funnelStats,
+    queryFn: funnelExecutionApi.stats,
+    staleTime: 15_000,
   });
 }

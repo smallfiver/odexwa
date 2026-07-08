@@ -35,6 +35,8 @@ import { PluginsApiModule } from './modules/plugins/plugins.module';
 import { AgentToolsModule } from './core/agent-tools/agent-tools.module';
 import { IntegrationModule } from './modules/integration/integration.module';
 import { SalesWebhookModule } from './modules/sales-webhook/sales-webhook.module';
+import { ProductsModule } from './modules/products/products.module';
+import { SupabaseModule } from './modules/supabase/supabase.module';
 
 // Only import QueueModule if explicitly enabled to avoid Redis connection errors
 const queueModules: Array<Type | DynamicModule> = [];
@@ -135,6 +137,7 @@ if (dashboardServingEnabled && dashboardBuildPresent) {
             __dirname + '/modules/template/**/*.entity{.ts,.js}',
             __dirname + '/engine/**/*.entity{.ts,.js}',
             __dirname + '/modules/integration/**/*.entity{.ts,.js}',
+            __dirname + '/modules/products/**/*.entity{.ts,.js}',
           ],
           migrations: [__dirname + '/database/migrations/*{.ts,.js}'],
           logging: configService.get<boolean>('dataDatabase.logging', false),
@@ -222,6 +225,7 @@ if (dashboardServingEnabled && dashboardBuildPresent) {
     LoggerModule,
     CacheModule,
     StorageModule,
+    SupabaseModule,
     AuditModule,
     EventsModule, // WebSocket real-time events
     ...queueModules,
@@ -246,6 +250,7 @@ if (dashboardServingEnabled && dashboardBuildPresent) {
     AgentToolsModule, // Agent-invocable tool registry (protocol-neutral)
     IntegrationModule, // Integration Fabric: @Public provider-webhook ingress + fast-ack pipeline
     SalesWebhookModule, // PerfectPay/Kirvano sale-approved webhook -> auto WhatsApp dispatch
+    ProductsModule, // Per-product sale webhooks + WhatsApp message funnel (Produtos/Disparos)
     ...mcpModules, // MCP Streamable-HTTP server (opt-in via MCP_ENABLED=true)
     ...serveStaticModules, // Bundled dashboard SPA (production single-port setup)
   ],

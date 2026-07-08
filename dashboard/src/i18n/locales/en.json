@@ -70,6 +70,8 @@
     "sessions": "Sessions",
     "chats": "Chats",
     "webhooks": "Webhooks",
+    "products": "Products",
+    "dispatches": "Dispatches",
     "templates": "Templates",
     "apiKeys": "API Keys",
     "messageTester": "Message Tester",
@@ -308,6 +310,118 @@
       "step3": "<strong>3.</strong> Tap <strong>Link a Device</strong>, then tap <strong>Link with phone number instead</strong>",
       "step4": "<strong>4.</strong> Enter the 8-character code shown above on your phone",
       "waitingConnection": "Waiting for your phone to link…"
+    }
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Register products, generate sale webhooks and configure the message funnel.",
+    "addProduct": "New product",
+    "session": "Session",
+    "stepsLabel": "Steps",
+    "stepsCount": "{{count}} step",
+    "stepsCount_plural": "{{count}} steps",
+    "webhookUrls": "Sale webhooks",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "Generic"
+    },
+    "empty": {
+      "title": "No products yet",
+      "description": "Create a product to generate its webhooks and message funnel."
+    },
+    "noSessions": "Create a connected session first — products need a session to send messages.",
+    "name": "Name",
+    "namePlaceholder": "e.g. Online course",
+    "selectSession": "Select a session",
+    "funnelSteps": "Message funnel",
+    "placeholderHint": "Use {{name}} and {{phone}} to personalize the message.",
+    "stepN": "Step {{n}}",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "removeStep": "Remove step",
+    "stepType": "Type",
+    "stepTypes": {
+      "text": "Text",
+      "image": "Image",
+      "video": "Video",
+      "document": "Document"
+    },
+    "delayMinutes": "Delay (minutes)",
+    "replaceMedia": "Replace file",
+    "uploadMedia": "Upload file",
+    "stepText": "Message",
+    "caption": "Caption",
+    "textPlaceholder": "Type the message...",
+    "addStep": "Add step",
+    "editTitle": "Edit product",
+    "createTitle": "New product",
+    "testTitle": "Test funnel",
+    "testDescription": "Send the full funnel to a WhatsApp number to preview it.",
+    "phone": "WhatsApp number",
+    "sendTest": "Send test",
+    "deleteTitle": "Delete product",
+    "deleteConfirm": "Delete \"{{name}}\"? This won't stop funnels already running.",
+    "actions": {
+      "test": "Test",
+      "copy": "Copy URL"
+    },
+    "toasts": {
+      "copyFailed": "Could not copy the URL.",
+      "uploadFailed": "Upload failed: {{message}}",
+      "updated": "Product updated.",
+      "created": "Product created.",
+      "saveFailed": "Could not save: {{message}}",
+      "deleted": "Product deleted.",
+      "deleteFailed": "Could not delete: {{message}}",
+      "testSent": "Test funnel started.",
+      "testFailed": "Test failed: {{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "Dispatches",
+    "subtitle": "Track running and finished message funnels.",
+    "stats": {
+      "running": "Running",
+      "completedToday": "Completed today",
+      "failedToday": "Failed today"
+    },
+    "allProducts": "All products",
+    "allStatuses": "All statuses",
+    "statuses": {
+      "running": "Running",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "failed": "Failed"
+    },
+    "empty": {
+      "title": "No dispatches yet",
+      "description": "Funnels appear here when a sale is approved."
+    },
+    "unknownProduct": "Unknown product",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generic": "Generic",
+      "test": "Test"
+    },
+    "customerPhone": "Phone",
+    "startedAt": "Started at",
+    "nextStepAt": "Next step at",
+    "completedAt": "Completed at",
+    "stepN": "Step {{n}}",
+    "stepResults": {
+      "sent": "Sent",
+      "failed": "Failed",
+      "skipped": "Skipped",
+      "pending": "Pending"
+    },
+    "cancel": "Cancel funnel",
+    "cancelTitle": "Cancel funnel",
+    "cancelConfirm": "Cancel the funnel for {{name}}? Remaining steps won't be sent.",
+    "toasts": {
+      "cancelled": "Funnel cancelled.",
+      "cancelFailed": "Could not cancel: {{message}}"
     }
   },
   "webhooks": {

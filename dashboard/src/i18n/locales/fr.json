@@ -70,6 +70,8 @@
     "sessions": "Sessions",
     "chats": "Discussions",
     "webhooks": "Webhooks",
+    "products": "Produits",
+    "dispatches": "Envois",
     "templates": "Templates",
     "apiKeys": "Clés API",
     "messageTester": "Testeur de messages",
@@ -807,7 +809,9 @@
         "confirm": "Régénérer le secret de signature pour {{id}} ? Le secret actuel arrêtera de fonctionner immédiatement.",
         "action": "Régénérer"
       },
-      "edit": { "title": "Modifier {{id}}" },
+      "edit": {
+        "title": "Modifier {{id}}"
+      },
       "delete": {
         "title": "Supprimer l'instance",
         "confirm": "Supprimer l'instance {{id}} ? Son URL d'entrée et son secret arrêteront de fonctionner immédiatement.",
@@ -834,6 +838,118 @@
         "secretRegenerated": "Secret régénéré",
         "actionFailed": "L'action a échoué"
       }
+    }
+  },
+  "products": {
+    "title": "Produits",
+    "subtitle": "Enregistrez des produits, générez des webhooks de vente et configurez le tunnel de messages.",
+    "addProduct": "Nouveau produit",
+    "session": "Session",
+    "stepsLabel": "Étapes",
+    "stepsCount": "{{count}} étape",
+    "stepsCount_plural": "{{count}} étapes",
+    "webhookUrls": "Webhooks de vente",
+    "providers": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generico": "Générique"
+    },
+    "empty": {
+      "title": "Aucun produit pour l’instant",
+      "description": "Créez un produit pour générer ses webhooks et son tunnel de messages."
+    },
+    "noSessions": "Créez d’abord une session connectée — les produits ont besoin d’une session pour envoyer des messages.",
+    "name": "Nom",
+    "namePlaceholder": "ex. Cours en ligne",
+    "selectSession": "Sélectionnez une session",
+    "funnelSteps": "Tunnel de messages",
+    "placeholderHint": "Utilisez {{name}} et {{phone}} pour personnaliser le message.",
+    "stepN": "Étape {{n}}",
+    "moveUp": "Monter",
+    "moveDown": "Descendre",
+    "removeStep": "Supprimer l’étape",
+    "stepType": "Type",
+    "stepTypes": {
+      "text": "Texte",
+      "image": "Image",
+      "video": "Vidéo",
+      "document": "Document"
+    },
+    "delayMinutes": "Délai (minutes)",
+    "replaceMedia": "Remplacer le fichier",
+    "uploadMedia": "Téléverser un fichier",
+    "stepText": "Message",
+    "caption": "Légende",
+    "textPlaceholder": "Saisissez le message...",
+    "addStep": "Ajouter une étape",
+    "editTitle": "Modifier le produit",
+    "createTitle": "Nouveau produit",
+    "testTitle": "Tester le tunnel",
+    "testDescription": "Envoyez le tunnel complet à un numéro WhatsApp pour le prévisualiser.",
+    "phone": "Numéro WhatsApp",
+    "sendTest": "Envoyer le test",
+    "deleteTitle": "Supprimer le produit",
+    "deleteConfirm": "Supprimer « {{name}} » ? Cela n’arrêtera pas les tunnels déjà en cours.",
+    "actions": {
+      "test": "Tester",
+      "copy": "Copier l’URL"
+    },
+    "toasts": {
+      "copyFailed": "Impossible de copier l’URL.",
+      "uploadFailed": "Échec du téléversement : {{message}}",
+      "updated": "Produit mis à jour.",
+      "created": "Produit créé.",
+      "saveFailed": "Impossible d’enregistrer : {{message}}",
+      "deleted": "Produit supprimé.",
+      "deleteFailed": "Impossible de supprimer : {{message}}",
+      "testSent": "Tunnel de test démarré.",
+      "testFailed": "Le test a échoué : {{message}}"
+    }
+  },
+  "dispatches": {
+    "title": "Envois",
+    "subtitle": "Suivez les tunnels de messages en cours et terminés.",
+    "stats": {
+      "running": "En cours",
+      "completedToday": "Terminés aujourd’hui",
+      "failedToday": "Échoués aujourd’hui"
+    },
+    "allProducts": "Tous les produits",
+    "allStatuses": "Tous les statuts",
+    "statuses": {
+      "running": "En cours",
+      "completed": "Terminé",
+      "cancelled": "Annulé",
+      "failed": "Échoué"
+    },
+    "empty": {
+      "title": "Aucun envoi pour l’instant",
+      "description": "Les tunnels apparaissent ici lorsqu’une vente est approuvée."
+    },
+    "unknownProduct": "Produit inconnu",
+    "sources": {
+      "perfectpay": "PerfectPay",
+      "kirvano": "Kirvano",
+      "generic": "Générique",
+      "test": "Test"
+    },
+    "customerPhone": "Téléphone",
+    "startedAt": "Démarré le",
+    "nextStepAt": "Prochaine étape le",
+    "completedAt": "Terminé le",
+    "stepN": "Étape {{n}}",
+    "stepResults": {
+      "sent": "Envoyé",
+      "failed": "Échoué",
+      "skipped": "Ignoré",
+      "pending": "En attente"
+    },
+    "cancel": "Annuler le tunnel",
+    "cancelTitle": "Annuler le tunnel",
+    "cancelConfirm": "Annuler le tunnel de {{name}} ? Les étapes restantes ne seront pas envoyées.",
+    "toasts": {
+      "cancelled": "Tunnel annulé.",
+      "cancelFailed": "Impossible d’annuler : {{message}}"
     }
   }
 }
